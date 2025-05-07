@@ -27,6 +27,7 @@ T hallarMod(T base, T exp, T mod) {
     return result;
 }
 
+//funcion para calcular el inverso modular
 template <typename T>
 T modInverso(T e, T euler) {
     T t = 0, newt = 1;
@@ -48,6 +49,7 @@ T modInverso(T e, T euler) {
     return t;
 }
 
+//funcion para verificar si un numero es primo
 bool isPrime(int num) {
     if (num < 2) return false;
     for (int i = 2; i * i <= num; ++i)
