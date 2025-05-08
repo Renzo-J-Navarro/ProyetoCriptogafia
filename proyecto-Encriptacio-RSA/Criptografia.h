@@ -1,5 +1,5 @@
 #pragma once
-#include "archivos.h"
+#include "archivo.h"
 #include "Calculo.h"
 
 #include <iostream>

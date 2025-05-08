@@ -111,7 +111,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="archivos.h" />
+    <ClInclude Include="archivo.h" />
     <ClInclude Include="Criptografia.h" />
     <ClInclude Include="Calculo.h" />
   </ItemGroup>

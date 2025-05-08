@@ -21,7 +21,7 @@
     <ClInclude Include="Calculo.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="archivos.h">
+    <ClInclude Include="archivo.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
