@@ -66,9 +66,8 @@ int main() {
         }
         case 3:
         {
+            system("cls");
 			cifrado = leerNumeros("cifrado.txt");
-            //vector<int> cifradoLeido = leerNumeros("cifrado.txt");
-            //if (cifradoLeido.empty()) {
 			if (cifrado.empty()) {
                 cout << "\n\tNo se encontro archivo de cifrado o esta vacio.\n";
             }
