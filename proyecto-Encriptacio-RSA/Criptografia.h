@@ -20,7 +20,7 @@ public:
 
  
     bool generarClaves(int p, int q) {
-        if (!isPrime(p) || !isPrime(q) || p == q) return false;
+        if (!esPrimo(p) || !esPrimo(q) || p == q) return false;
         _p = p;
         _q = q;
         _n = p * q;

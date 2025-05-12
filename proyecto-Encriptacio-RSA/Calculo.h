@@ -50,7 +50,7 @@ T modInverso(T e, T euler) {
 }
 
 //funcion para verificar si un numero es primo
-bool isPrime(int num) {
+bool esPrimo(int num) {
     if (num < 2) return false;
     for (int i = 2; i * i <= num; ++i)
         if (num % i == 0) return false;
