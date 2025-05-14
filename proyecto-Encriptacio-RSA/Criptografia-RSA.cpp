@@ -53,7 +53,7 @@ int main() {
             cout << "\nIngrese el mensaje a encriptar: ";
             getline(cin, mensaje);
             cifrado = rsa.encriptar(mensaje);
-            guardarNumeros("cifrado.txt", cifrado);
+            guardarNumeros("encriptado/cifrado.txt", cifrado);
 
             cout << "\nMensaje original: " << mensaje;
             cout << "\nMensaje encriptado: ";
@@ -66,13 +66,13 @@ int main() {
         case 3:
         {
             system("cls");
-			cifrado = leerNumeros("cifrado.txt");
+			cifrado = leerNumeros("encriptado/cifrado.txt");
 			if (cifrado.empty()) {
                 cout << "\n\tNo se encontro archivo de cifrado o esta vacio.\n";
             }
             else {
                 desencriptado = rsa.desencriptar(cifrado);
-                guardarTexto("descifrado.txt", desencriptado);
+                guardarTexto("desencriptado/descifrado.txt", desencriptado);
                 cout << "\nMensaje desencriptado: " << desencriptado << endl;
             }
             break;
