@@ -12,15 +12,15 @@ using namespace std;
 
 class DatoRSA {
 private:
-    int _p, _q, _n, _euler, _e, _d;
+    long long _p, _q, _n, _euler, _e, _d;
 public:
 
-    DatoRSA(int p = 0, int q = 0, int n = 0, int euler = 0, int e = 0, int d = 0)
+    DatoRSA(long long p = 0, long long q = 0, long long n = 0, long long euler = 0, long long e = 0, long long d = 0)
         : _p(p), _q(q), _n(n), _euler(euler), _e(e), _d(d) {
     }
 
 
-    bool generarClaves(int p, int q) {
+    bool generarClaves(long long p, long long q) {
         if (!esPrimo(p) || !esPrimo(q) || p == q) return false;
         _p = p;
         _q = q;
@@ -46,32 +46,32 @@ public:
 		return oss.str();
     }
 
-    vector<int> encriptar(const string& mensaje) {
-        vector<int> cifrado;
+    vector<long long> encriptar(const string& mensaje) {
+        vector<long long> cifrado;
         for (char c : mensaje) {
-            int m = static_cast<int>(c);
-            int ciph = hallarMod(m, _e, _n);
+            long long m = static_cast<long long>(c);
+            long long ciph = hallarMod(m, _e, _n);
             cifrado.push_back(ciph);
         }
         return cifrado;
     }
 
-    string desencriptar(const vector<int>& cifrado) {
+    string desencriptar(const vector<long long>& cifrado) {
         string mensaje;
-        for (int ciph : cifrado) {
-            int m = hallarMod(ciph, _d, _n);
+        for (long long ciph : cifrado) {
+            long long m = hallarMod(ciph, _d, _n);
             mensaje += static_cast<char>(m);
         }
         return mensaje;
     }
 
-    int get_E() const { return _e; }
-    int get_D() const { return _d; }
-    int get_N() const { return _n; }
+    long long get_E() const { return _e; }
+    long long get_D() const { return _d; }
+    long long get_N() const { return _n; }
 
-	void setE(int e) { _e = e; }
-	void setD(int d) { _d = d; }
-	void setN(int n) { _n = n; }
+	void setE(long long e) { _e = e; }
+	void setD(long long d) { _d = d; }
+	void setN(long long n) { _n = n; }
 
 };
 

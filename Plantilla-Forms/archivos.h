@@ -13,14 +13,14 @@ void guardarTexto(const string& nombre, const string& texto) {
     archivo.close();
 }
 // se guarda el valor numerico encriptado
-void guardarNumeros(const string& nombre, const vector<int>& datos) {
+void guardarNumeros(const string& nombre, const vector<long long>& datos) {
     ofstream archivo(nombre);
-    for (int n : datos) archivo << n << " ";    
+    for (long long n : datos) archivo << n << " ";    
     archivo.close();
 }
 // se leen los valores numericos para desencriptar
-vector<int> leerNumeros(const string& nombre) {
-    vector<int> datos;
+vector<long long> leerNumeros(const string& nombre) {
+    vector<long long> datos;
     ifstream archivo(nombre);
     string linea;
     if (getline(archivo, linea)) {

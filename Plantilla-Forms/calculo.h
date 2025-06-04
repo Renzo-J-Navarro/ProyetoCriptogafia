@@ -46,9 +46,9 @@ T modInverso(T d, T euler) {
     return t;
 }
 //funcion para verificar si un numero es primo
-bool esPrimo(int num) {
+bool esPrimo(long long num) {
     if (num < 2) return false;
-    for (int i = 2; i * i <= num; ++i)
+    for (long long i = 2; i * i <= num; ++i)
         if (num % i == 0) return false;
     return true;
 }

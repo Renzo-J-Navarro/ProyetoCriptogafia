@@ -589,8 +589,8 @@ namespace PlantillaForms {
 		int q;
 		DatoRSA rsa;
 		try {
-			p = Convert::ToInt32(textBox1->Text);
-			q = Convert::ToInt32(textBox2->Text);
+			p = Convert::ToDouble(textBox1->Text);
+			q = Convert::ToDouble(textBox2->Text);
 		}
 		catch (...) {
 			MessageBox::Show("Por favor, ingrese valores numéricos válidos para p y q.", "Error",
@@ -615,8 +615,8 @@ namespace PlantillaForms {
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	DatoRSA rsa;
 
-	int nClave = Convert::ToInt32(textBox3->Text);
-	int eClave = Convert::ToInt32(textBox4->Text);
+	int nClave = Convert::ToDouble(textBox3->Text);
+	int eClave = Convert::ToDouble(textBox4->Text);
 
 	rsa.setN(nClave);
 	rsa.setE(eClave);
@@ -660,7 +660,7 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	}
 
 	// Encriptar
-	vector<int> cifrado = rsa.encriptar(mensajeStd);
+	vector<long long> cifrado = rsa.encriptar(mensajeStd);
 	if (cifrado.empty()) {
 		MessageBox::Show("El mensaje no pudo ser encriptado.", "Error", 
 			MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -684,8 +684,8 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 		DatoRSA rsa;
 		vector<int> datocifrado;
 
-		int nClave = Convert::ToInt32(textBox6->Text);
-		int dClave = Convert::ToInt32(textBox5->Text);
+		int nClave = Convert::ToDouble(textBox6->Text);
+		int dClave = Convert::ToDouble(textBox5->Text);
 
 		rsa.setN(nClave);
 		rsa.setD(dClave);
@@ -716,7 +716,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 			}
 			
 			// Convertir mensaje separado por | a vector<int>
-			vector<int> cifrado;
+			vector<long long> cifrado;
 			stringstream ss(mensajeStd);
 			string token;
 			while (std::getline(ss, token, ' ')) {
@@ -731,7 +731,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 		}
 		else {
 			// Leer desde archivo
-			vector<int> cifrado = leerNumeros("encriptado/cifrado.txt");
+			vector<long long> cifrado = leerNumeros("encriptado/cifrado.txt");
 			if (cifrado.empty()) {
 				MessageBox::Show("El archivo de texto encriptado está vacío o no existe.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 				return;
