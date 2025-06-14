@@ -130,10 +130,19 @@
   <ItemGroup>
     <ClInclude Include="archivos.h" />
     <ClInclude Include="calculo.h" />
+    <ClInclude Include="Claves.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Criptografo.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Criptografia.h" />
+    <ClInclude Include="Desencriptar.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Encriptar.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
   </ItemGroup>
@@ -158,8 +167,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Claves.resx">
+      <DependentUpon>Claves.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Criptografo.resx">
       <DependentUpon>Criptografo.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Desencriptar.resx">
+      <DependentUpon>Desencriptar.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Encriptar.resx">
+      <DependentUpon>Encriptar.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

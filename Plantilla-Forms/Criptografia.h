@@ -19,30 +19,78 @@ public:
         : _p(p), _q(q), _n(n), _euler(euler), _e(e), _d(d) {
     }
 
+    vector<long long> valores_D_Validos() const {
+        vector <long long > validarD;
+        for (long long i = 2; i < _euler; i++)
+        {
+            if (mcd(i, _euler) == 1) {
+                validarD.push_back(i);
+            }
+        }
+        return validarD;
+    }
 
-    bool generarClaves(long long p, long long q) {
+    bool generarClaves(long long p, long long q, long long select_d = -1) {
         if (!esPrimo(p) || !esPrimo(q) || p == q) return false;
         _p = p;
         _q = q;
         _n = p * q;
         _euler = (p - 1) * (q - 1);
 
-        _e = rand() % (_euler - 2) + 2;
-        while (mcd(_e, _euler) != 1) ++_e;
+        if (select_d != -1)
+        {
+            if (select_d > 1 && select_d < _euler && mcd(select_d, _euler) == 1) 
+            {
+                _d = select_d;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            _d = rand() % (_euler - 2) + 2;
+            while (mcd(_d, _euler) != 1) {
+                ++_d;
+            }
+        }
 
-        _d = modInverso(_e, _euler);
+        _e = modInverso(_d, _euler);
 
-        mostrarClaves();
-
-        return _d != -1;
+        if (_d == -1) {
+            return false;
+        }
+        return true;
     }
 
-    string mostrarClaves() {
+    string establecer_d_interactivo() {
+        ostringstream oss;
+
+        vector<long long> opcion_d = valores_D_Validos();
+
+        oss << "-- Valores válidos para 'e' --" << "\n";
+        if (opcion_d.empty()) {}
+        else
+        {
+            int contador = 0;
+            for (long long val : opcion_d) {
+                oss << val << " ";
+                contador++;
+                if (contador % 10 == 0) { oss << "\n"; }
+                if (contador >= 20) { break; } // limita la cantidad de opciones que se mostrara
+            }
+        }
+        oss << endl;
+        return oss.str();
+    }
+
+    string mostrarClaves() const {
 		ostringstream oss;
-        oss << "publica: (e=" << _e << ", n=" << _n << ")\n";
         oss << "privada: (d=" << _d << ", n=" << _n << ")\n";
-        oss << "p = " << _p << ", q = " << _q << ", n = " << _n << endl;
-        oss << "euler = " << _euler << ", e = " << _e << ", d = " << _d << endl;
+        oss << "publica: (e=" << _e << ", n=" << _n << ")\n";
+        oss << "p = " << _p << ", q = " << _q << ", n = " << _n 
+            << "euler = " << _euler << ", e = " << _e << ", d = " << _d << endl;
 		return oss.str();
     }
 
@@ -65,10 +113,14 @@ public:
         return mensaje;
     }
 
+    long long get_P() const { return _p; }
+    long long get_Q() const { return _q; }
+    long long get_Euler() const { return _euler; }
     long long get_E() const { return _e; }
     long long get_D() const { return _d; }
     long long get_N() const { return _n; }
 
+    void setEuler(long long euler) { _euler = euler; }
 	void setE(long long e) { _e = e; }
 	void setD(long long d) { _d = d; }
 	void setN(long long n) { _n = n; }
