@@ -28,6 +28,7 @@ namespace PlantillaForms {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			rsa = new DatoRSA();
 		}
 
 	protected:
@@ -39,6 +40,10 @@ namespace PlantillaForms {
 			if (components)
 			{
 				delete components;
+			}
+			if (rsa) {
+				delete rsa;
+				rsa = nullptr;
 			}
 		}
 	private: System::Windows::Forms::Label^ label1;
@@ -65,6 +70,7 @@ namespace PlantillaForms {
 		/// Variable del diseñador necesaria.
 		/// </summary>
 		System::ComponentModel::Container ^components;
+		DatoRSA* rsa;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -164,6 +170,7 @@ namespace PlantillaForms {
 			// 
 			// button2
 			// 
+			this->button2->Enabled = false;
 			this->button2->Location = System::Drawing::Point(387, 362);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(140, 45);
@@ -253,9 +260,9 @@ namespace PlantillaForms {
 		}
 #pragma endregion
 	private: System::Void Claves_Load(System::Object^ sender, System::EventArgs^ e) {
+		srand(time(0));
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		DatoRSA rsa;
 		int p;
 		int q;
 
@@ -268,14 +275,14 @@ namespace PlantillaForms {
 				MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
-		if (rsa.generarClaves(p, q, -1)) {
+		if (rsa->generarClaves(p, q, -1)) {
 			richTextBox1->Clear();
-			String^ opcion_d = gcnew String(rsa.establecer_d_interactivo().c_str());
+			String^ opcion_d = gcnew String(rsa->establecer_d_interactivo().c_str());
 			richTextBox1->AppendText(opcion_d);
 			textBox3->Enabled = true;
 			button2->Enabled = true;
 			richTextBox1->Enabled = true;
-			MessageBox::Show("Opciones de 'e' generadas. Por favor, elige un valor y haz clic en 'Confirmar E'.", "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show("Opciones de 'd' generadas. Puede elegir cualquira luego 'Genere las Claves'", "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		}
 		else {
 			MessageBox::Show("Error al generar las opciones de 'e'.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -285,7 +292,6 @@ namespace PlantillaForms {
 		}
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	DatoRSA rsa;
 	int elegir_d;
 
 	System::Windows::Forms::DialogResult resultado = System::Windows::Forms::MessageBox::Show(
@@ -303,13 +309,13 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 		}
 		catch (...)
 		{
-			MessageBox::Show("Por favor, ingrese un número válido para 'e'.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			MessageBox::Show("Por favor, ingrese un número válido para 'd'.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
-		if (rsa.generarClaves(rsa.get_P(), rsa.get_Q(), elegir_d))
+		if (rsa->generarClaves(rsa->get_P(), rsa->get_Q(), elegir_d))
 		{
 			richTextBox2->Clear();
-			string claves = rsa.mostrarClaves();
+			string claves = rsa->mostrarClaves();
 			String^ mensaje = "Claves Creadas:\n" + gcnew System::String(claves.c_str());
 			richTextBox2->AppendText(mensaje);
 			richTextBox2->Enabled = true;
@@ -322,11 +328,11 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	}
 	else
 	{
-		if (rsa.generarClaves(rsa.get_P(), rsa.get_Q(), 0)) {
+		if (rsa->generarClaves(rsa->get_P(), rsa->get_Q())) {
 			richTextBox2->Clear();
-			string claves = rsa.mostrarClaves();
-			String^ mensaje = "Claves Creadas:\n" + gcnew System::String(claves.c_str());
-			richTextBox2->AppendText(mensaje);
+			string claves1 = rsa->mostrarClaves();
+			String^ mensaje1 = "Claves Creadas:\n" + gcnew System::String(claves1.c_str());
+			richTextBox2->AppendText(mensaje1);
 			richTextBox2->Enabled = true;
 			MessageBox::Show("Claves generadas correctamente.", "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		}

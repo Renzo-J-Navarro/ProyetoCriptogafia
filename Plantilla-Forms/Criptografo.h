@@ -210,7 +210,7 @@ namespace PlantillaForms {
 			this->groupBox2->Controls->Add(this->richTextBox3);
 			this->groupBox2->Controls->Add(this->richTextBox2);
 			this->groupBox2->Controls->Add(this->label5);
-			this->groupBox2->Location = System::Drawing::Point(697, 93);
+			this->groupBox2->Location = System::Drawing::Point(382, 86);
 			this->groupBox2->Margin = System::Windows::Forms::Padding(4);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Padding = System::Windows::Forms::Padding(4);
@@ -337,7 +337,7 @@ namespace PlantillaForms {
 			this->groupBox3->Controls->Add(this->richTextBox4);
 			this->groupBox3->Controls->Add(this->richTextBox5);
 			this->groupBox3->Controls->Add(this->label15);
-			this->groupBox3->Location = System::Drawing::Point(1011, 93);
+			this->groupBox3->Location = System::Drawing::Point(696, 86);
 			this->groupBox3->Margin = System::Windows::Forms::Padding(4);
 			this->groupBox3->Name = L"groupBox3";
 			this->groupBox3->Padding = System::Windows::Forms::Padding(4);
@@ -459,7 +459,7 @@ namespace PlantillaForms {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
 				static_cast<System::Int32>(static_cast<System::Byte>(128)));
-			this->ClientSize = System::Drawing::Size(1365, 457);
+			this->ClientSize = System::Drawing::Size(1011, 457);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->button4);
@@ -570,7 +570,6 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	*/
 	Encriptar^ form2 = gcnew Encriptar();
 	form2->Show();
-
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	/*
@@ -641,7 +640,6 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	*/
 	Desencriptar^ form3 = gcnew Desencriptar();
 	form3->Show();
-
 }
 };
 }

@@ -69,7 +69,7 @@ public:
 
         vector<long long> opcion_d = valores_D_Validos();
 
-        oss << "-- Valores válidos para 'e' --" << "\n";
+        oss << "Valores para 'd'" << "\n";
         if (opcion_d.empty()) {}
         else
         {
@@ -78,7 +78,7 @@ public:
                 oss << val << " ";
                 contador++;
                 if (contador % 10 == 0) { oss << "\n"; }
-                if (contador >= 20) { break; } // limita la cantidad de opciones que se mostrara
+                if (contador >= 50) { break; } // limita la cantidad de opciones que se mostrara
             }
         }
         oss << endl;
@@ -90,7 +90,7 @@ public:
         oss << "privada: (d=" << _d << ", n=" << _n << ")\n";
         oss << "publica: (e=" << _e << ", n=" << _n << ")\n";
         oss << "p = " << _p << ", q = " << _q << ", n = " << _n 
-            << "euler = " << _euler << ", e = " << _e << ", d = " << _d << endl;
+            << ", euler = " << _euler << ", e = " << _e << ", d = " << _d << endl;
 		return oss.str();
     }
 
@@ -120,6 +120,8 @@ public:
     long long get_D() const { return _d; }
     long long get_N() const { return _n; }
 
+	void setP(long long p) { _p = p; }
+	void setQ(long long q) { _q = q; }
     void setEuler(long long euler) { _euler = euler; }
 	void setE(long long e) { _e = e; }
 	void setD(long long d) { _d = d; }
