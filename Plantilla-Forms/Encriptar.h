@@ -109,7 +109,7 @@ namespace PlantillaForms {
 			this->label5->AutoSize = true;
 			this->label5->Location = System::Drawing::Point(12, 151);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(394, 64);
+			this->label5->Size = System::Drawing::Size(383, 64);
 			this->label5->TabIndex = 18;
 			this->label5->Text = resources->GetString(L"label5.Text");
 			// 
@@ -197,6 +197,7 @@ namespace PlantillaForms {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Name = L"Encriptar";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"Encriptar";
 			this->Load += gcnew System::EventHandler(this, &Encriptar::Encriptar_Load);
 			this->ResumeLayout(false);

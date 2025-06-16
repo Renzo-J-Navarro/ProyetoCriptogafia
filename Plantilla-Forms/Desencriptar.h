@@ -198,6 +198,7 @@ namespace PlantillaForms {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Name = L"Desencriptar";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"Desencriptar";
 			this->Load += gcnew System::EventHandler(this, &Desencriptar::Desencriptar_Load);
 			this->ResumeLayout(false);

@@ -48,6 +48,7 @@ namespace PlantillaForms {
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::Label^ label2;
 
 
 
@@ -96,6 +97,7 @@ namespace PlantillaForms {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -105,7 +107,7 @@ namespace PlantillaForms {
 			this->button1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button1->ForeColor = System::Drawing::Color::Navy;
-			this->button1->Location = System::Drawing::Point(35, 79);
+			this->button1->Location = System::Drawing::Point(32, 125);
 			this->button1->Margin = System::Windows::Forms::Padding(4);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(336, 85);
@@ -121,7 +123,7 @@ namespace PlantillaForms {
 			this->button2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button2->ForeColor = System::Drawing::Color::Navy;
-			this->button2->Location = System::Drawing::Point(35, 169);
+			this->button2->Location = System::Drawing::Point(32, 215);
 			this->button2->Margin = System::Windows::Forms::Padding(4);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(336, 85);
@@ -137,7 +139,7 @@ namespace PlantillaForms {
 			this->button3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button3->ForeColor = System::Drawing::Color::Navy;
-			this->button3->Location = System::Drawing::Point(35, 261);
+			this->button3->Location = System::Drawing::Point(32, 307);
 			this->button3->Margin = System::Windows::Forms::Padding(4);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(336, 85);
@@ -168,7 +170,7 @@ namespace PlantillaForms {
 			this->button4->Font = (gcnew System::Drawing::Font(L"Times New Roman", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button4->ForeColor = System::Drawing::Color::Navy;
-			this->button4->Location = System::Drawing::Point(35, 352);
+			this->button4->Location = System::Drawing::Point(32, 398);
 			this->button4->Margin = System::Windows::Forms::Padding(4);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(336, 85);
@@ -177,13 +179,24 @@ namespace PlantillaForms {
 			this->button4->UseVisualStyleBackColor = false;
 			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(10, 79);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(355, 32);
+			this->label2->TabIndex = 5;
+			this->label2->Text = L"Puedes pulsar cualquier boton, si no tienes una clave \r\npuedes genarla, si ya pos"
+				L"ees una pulsa los otros botones.";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
 				static_cast<System::Int32>(static_cast<System::Byte>(128)));
-			this->ClientSize = System::Drawing::Size(422, 450);
+			this->ClientSize = System::Drawing::Size(411, 496);
+			this->Controls->Add(this->label2);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button3);
@@ -192,6 +205,7 @@ namespace PlantillaForms {
 			this->ForeColor = System::Drawing::Color::Teal;
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MyForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Criptografo";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);
