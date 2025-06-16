@@ -42,7 +42,10 @@ namespace PlantillaForms {
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::RichTextBox^ richTextBox1;
 	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::Label^ label7;
+
+	private: System::Windows::Forms::RichTextBox^ richTextBox2;
+	private: System::Windows::Forms::Button^ button1;
 	protected:
 
 	private:
@@ -58,6 +61,7 @@ namespace PlantillaForms {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Desencriptar::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -66,7 +70,9 @@ namespace PlantillaForms {
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->richTextBox2 = (gcnew System::Windows::Forms::RichTextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -87,7 +93,7 @@ namespace PlantillaForms {
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(383, 32);
 			this->label2->TabIndex = 1;
-			this->label2->Text = L"Tenemos que ingresar nuestra clave privada que cuenta con el\r\nvalor del \"e\" y \"n\""
+			this->label2->Text = L"Tenemos que ingresar nuestra clave privada que cuenta con el\r\nvalor del \"d\" y \"n\""
 				L" para descifrar el mensaje que nos enviaron.";
 			// 
 			// label3
@@ -97,9 +103,9 @@ namespace PlantillaForms {
 				static_cast<System::Byte>(0)));
 			this->label3->Location = System::Drawing::Point(25, 119);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(62, 16);
+			this->label3->Size = System::Drawing::Size(63, 16);
 			this->label3->TabIndex = 2;
-			this->label3->Text = L"Valor E:";
+			this->label3->Text = L"Valor D:";
 			// 
 			// label4
 			// 
@@ -128,9 +134,9 @@ namespace PlantillaForms {
 			// 
 			// richTextBox1
 			// 
-			this->richTextBox1->Location = System::Drawing::Point(12, 243);
+			this->richTextBox1->Location = System::Drawing::Point(12, 228);
 			this->richTextBox1->Name = L"richTextBox1";
-			this->richTextBox1->Size = System::Drawing::Size(383, 96);
+			this->richTextBox1->Size = System::Drawing::Size(383, 59);
 			this->richTextBox1->TabIndex = 6;
 			this->richTextBox1->Text = L"";
 			// 
@@ -139,21 +145,39 @@ namespace PlantillaForms {
 			this->label5->AutoSize = true;
 			this->label5->Location = System::Drawing::Point(12, 151);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(394, 48);
+			this->label5->Size = System::Drawing::Size(394, 64);
 			this->label5->TabIndex = 7;
-			this->label5->Text = L"Podremos decidir si escribir el mensaje en un \"archivo de texto \r\n(.txt)\" o escri"
-				L"birlo nosotros mismos en el recuadro que esta abajo.\r\nEn la carpeta encriptado e"
-				L"ncontramos el (mensaje.txt) donde \r\n";
+			this->label5->Text = resources->GetString(L"label5.Text");
 			// 
-			// label6
+			// label7
 			// 
-			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(12, 354);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(363, 48);
-			this->label6->TabIndex = 8;
-			this->label6->Text = L"En la carpeta desencriptado estara el (descifrado.txt) con el \r\nmensaje descifrad"
-				L"o, tambien lo veremos en el recuadro de\r\narriba.";
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(12, 299);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(363, 48);
+			this->label7->TabIndex = 8;
+			this->label7->Text = L"En la carpeta desencriptado estara el (descifrado.txt) con el \r\nmensaje descifrad"
+				L"o, tambien lo podremos visualizar en el\r\nrecuadro de abajo el mensaje secreto qu"
+				L"e no enviaron.";
+			// 
+			// richTextBox2
+			// 
+			this->richTextBox2->Enabled = false;
+			this->richTextBox2->Location = System::Drawing::Point(12, 360);
+			this->richTextBox2->Name = L"richTextBox2";
+			this->richTextBox2->Size = System::Drawing::Size(383, 59);
+			this->richTextBox2->TabIndex = 9;
+			this->richTextBox2->Text = L"";
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(110, 427);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(178, 41);
+			this->button1->TabIndex = 10;
+			this->button1->Text = L"Empezar descrifrado";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Desencriptar::button1_Click);
 			// 
 			// Desencriptar
 			// 
@@ -161,8 +185,10 @@ namespace PlantillaForms {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
 				static_cast<System::Int32>(static_cast<System::Byte>(255)));
-			this->ClientSize = System::Drawing::Size(418, 513);
-			this->Controls->Add(this->label6);
+			this->ClientSize = System::Drawing::Size(452, 476);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->richTextBox2);
+			this->Controls->Add(this->label7);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->richTextBox1);
 			this->Controls->Add(this->textBox2);
@@ -173,10 +199,83 @@ namespace PlantillaForms {
 			this->Controls->Add(this->label1);
 			this->Name = L"Desencriptar";
 			this->Text = L"Desencriptar";
+			this->Load += gcnew System::EventHandler(this, &Desencriptar::Desencriptar_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+	private: System::Void Desencriptar_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+	DatoRSA rsa;
+	vector<int> datocifrado;
+
+	int dClave = Convert::ToDouble(textBox1->Text);
+	int nClave = Convert::ToDouble(textBox2->Text);
+
+	rsa.setD(dClave);
+	rsa.setN(nClave);
+
+	System::Windows::Forms::DialogResult resultado = System::Windows::Forms::MessageBox::Show(
+		"¿Desea escribir manualmente el mensaje a desencriptar?",
+		"Entrada de mensaje",
+		System::Windows::Forms::MessageBoxButtons::YesNo,
+		System::Windows::Forms::MessageBoxIcon::Question
+	);
+
+	string mensajeDesencriptado;
+	ostringstream salida;
+
+	if (resultado == System::Windows::Forms::DialogResult::Yes)
+	{
+		String^ mensaje = richTextBox1->Text;
+
+		if (String::IsNullOrWhiteSpace(mensaje)) {
+			MessageBox::Show("No se ha ingresado un mensaje. Por favor, escríbalo en el cuadro de texto.",
+				"Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return;
+		}
+		// Convertir mensaje a string
+		string mensajeStd;
+		for (int i = 0; i < mensaje->Length; ++i) {
+			mensajeStd += static_cast<char>(mensaje[i]);
+		}
+
+		// Convertir mensaje separado por | a vector<int>
+		vector<long long> cifrado;
+		stringstream ss(mensajeStd);
+		string token;
+		while (std::getline(ss, token, ' ')) {
+			if (!token.empty()) cifrado.push_back(std::stoi(token));
+		}
+
+		// Desencriptar
+		mensajeDesencriptado = rsa.desencriptar(cifrado);
+		salida << "Mensaje escrito manualmente:\n" << mensajeStd << endl;
+		salida << "Mensaje desencriptado:\n" << mensajeDesencriptado;
+		// Guardar archivo desencriptado
+		guardarTexto("desencriptado/descifrado.txt", mensajeDesencriptado);
+	}
+	else {
+		// Leer desde archivo
+		vector<long long> cifrado = leerNumeros("encriptado/cifrado.txt");
+		if (cifrado.empty()) {
+			MessageBox::Show("El archivo de texto encriptado está vacío o no existe.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+		mensajeDesencriptado = rsa.desencriptar(cifrado);
+		salida << "Mensaje desencriptado desde archivo:\n" << mensajeDesencriptado << "\n";
+		// Guardar archivo desencriptado
+		guardarTexto("desencriptado/descifrado.txt", mensajeDesencriptado);
+	}
+	// Mostrar resultado
+	richTextBox2->Enabled = true;
+	richTextBox2->Clear();
+	richTextBox2->AppendText(gcnew String(salida.str().c_str()));
+	MessageBox::Show("Desencriptación completada.", "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+}
+};
 }
