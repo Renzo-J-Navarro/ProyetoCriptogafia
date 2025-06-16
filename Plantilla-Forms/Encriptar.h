@@ -100,7 +100,7 @@ namespace PlantillaForms {
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(376, 48);
 			this->label7->TabIndex = 19;
-			this->label7->Text = L"En la carpeta encriptado estara el (cifrado.txt) con el mensaje \r\ncifrado, tambie"
+			this->label7->Text = L"En la carpeta encriptado estará el (cifrado.txt) con el mensaje \r\ncifrado, tambié"
 				L"n podremos visualizar nuestro mensaje secreto\r\nen el recuadro de abajo para envi"
 				L"arlo.";
 			// 

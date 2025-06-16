@@ -83,8 +83,8 @@ namespace PlantillaForms {
 			this->label1->Size = System::Drawing::Size(389, 48);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Si ya tenemos nuestras claves generadas y anotadas podemos\r\nrealizar el desencrip"
-				L"tado de un mensaje, con la clave privada\r\npodremos descrifrar el mensaje que no "
-				L"enviaron.";
+				L"tado de un mensaje, con la clave privada\r\npodremos descifrar el mensaje que no e"
+				L"nviaron.";
 			// 
 			// label2
 			// 
@@ -145,7 +145,7 @@ namespace PlantillaForms {
 			this->label5->AutoSize = true;
 			this->label5->Location = System::Drawing::Point(12, 151);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(394, 64);
+			this->label5->Size = System::Drawing::Size(383, 64);
 			this->label5->TabIndex = 7;
 			this->label5->Text = resources->GetString(L"label5.Text");
 			// 
@@ -156,9 +156,9 @@ namespace PlantillaForms {
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(363, 48);
 			this->label7->TabIndex = 8;
-			this->label7->Text = L"En la carpeta desencriptado estara el (descifrado.txt) con el \r\nmensaje descifrad"
-				L"o, tambien lo podremos visualizar en el\r\nrecuadro de abajo el mensaje secreto qu"
-				L"e no enviaron.";
+			this->label7->Text = L"En la carpeta desencriptado estará el (descifrado.txt) con el \r\nmensaje descifrad"
+				L"o, también lo podremos visualizar en el\r\nrecuadro de abajo el mensaje secreto qu"
+				L"e nos enviaron.";
 			// 
 			// richTextBox2
 			// 
@@ -185,7 +185,7 @@ namespace PlantillaForms {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
 				static_cast<System::Int32>(static_cast<System::Byte>(255)));
-			this->ClientSize = System::Drawing::Size(452, 476);
+			this->ClientSize = System::Drawing::Size(440, 476);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->richTextBox2);
 			this->Controls->Add(this->label7);

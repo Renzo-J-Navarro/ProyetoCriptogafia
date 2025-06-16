@@ -101,7 +101,7 @@ namespace PlantillaForms {
 			this->label1->AutoSize = true;
 			this->label1->Location = System::Drawing::Point(12, 9);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(472, 64);
+			this->label1->Size = System::Drawing::Size(489, 64);
 			this->label1->TabIndex = 0;
 			this->label1->Text = resources->GetString(L"label1.Text");
 			// 
@@ -155,7 +155,7 @@ namespace PlantillaForms {
 			this->label6->Size = System::Drawing::Size(498, 48);
 			this->label6->TabIndex = 5;
 			this->label6->Text = L"Ahora seleccionamos un valor de \"D\" nosotros o el programa, luego generamos \r\nnue"
-				L"stra clave publica y privada. Para esto pulsaremos en Generar Valores D para \r\nv"
+				L"stra clave pública y privada. Para esto pulsaremos en Generar Valores D para \r\nv"
 				L"er los valores que podemos usar.";
 			// 
 			// button1
@@ -226,8 +226,8 @@ namespace PlantillaForms {
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(498, 48);
 			this->label7->TabIndex = 13;
-			this->label7->Text = L"Despues de tener un valor para \"d\" se realizara el calculo para hallar las claves"
-				L", \r\ntambien veremos los valores de \"p, q, n y euler\" que usa el programa para ge"
+			this->label7->Text = L"Después de tener un valor para \"d\" se realizará el cálculo para hallar las claves"
+				L", \r\ntambién veremos los valores de \"p, q, n y euler\" que usa el programa para ge"
 				L"nerar\r\nlas claves correspondientes.";
 			// 
 			// Claves
@@ -282,7 +282,7 @@ namespace PlantillaForms {
 			textBox3->Enabled = true;
 			button2->Enabled = true;
 			richTextBox1->Enabled = true;
-			MessageBox::Show("Opciones de 'd' generadas. Puede elegir cualquira luego 'Genere las Claves'", "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show("Opciones de 'd' generadas. Puede elegir cualquiera luego presione 'Generar Claves'", "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		}
 		else {
 			MessageBox::Show("Error al generar las opciones de 'e'.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);

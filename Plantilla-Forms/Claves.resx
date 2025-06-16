@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
-    <value>El programa nos pedira ingresar los valores de P y Q estos valores numericos
-tienes que ser primos diferentes, un ejemplo es 13 y 17. Luego, el programa
-realiza una calculo del "Modulo = n" y "Euler = euler", valores necesario para
+    <value>El programa nos pedirá ingresar los valores de "p" y "q" estos valores numéricos
+tienen que ser primos diferentes. Ejemplo (p=13) y (q=17). Luego, el programa
+realiza un cálculo del "Modulo = n" y "Euler = euler", valores necesarios para
 generar las claves.</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Los calculos respectivos para hallar "n" es (p*q), este 
 tiene que ser mayor a 126 para evitar errores con el 
 mensaje, el "euler" se halla con (p-1)(q-1) esto lo
-calculara el programa una ves tengamos "p" y "q".</value>
+calculara el programa una vez tengamos "p" y "q".</value>
   </data>
 </root>
