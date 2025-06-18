@@ -89,7 +89,8 @@ public:
 		ostringstream oss;
         oss << "Esta es tu clave exclusiva para ti.\n";
         oss << "Clave privada: (d=" << _d << ", n=" << _n << ")\n";
-        oss << "Esta es tu clave para compartir publica: (e=" << _e << ", n=" << _n << ")\n";
+        oss << "Esta es tu clave para compartir.\n";
+        oss << "Clave publica: (e = " << _e << ", n = " << _n << ")\n";
         oss << "Valores generados para el calculo de las claves.\n";
         oss << "p = " << _p << ", q = " << _q << ", n = " << _n 
             << ", euler = " << _euler << ", e = " << _e << ", d = " << _d << endl;
