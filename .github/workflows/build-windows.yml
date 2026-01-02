@@ -1,1 +1,64 @@
+name: Build Windows
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - NuevoMaster
+      - main
+      - master
 
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Find solution (.sln)
+        id: find_sln
+        shell: bash
+        run: |
+          sol=$(find . -name '*.sln' -print -quit || true)
+          echo "solution=$sol" >> $GITHUB_OUTPUT
+
+      - name: Build solution with MSBuild (if found)
+        if: steps.find_sln.outputs.solution != ''
+        shell: bash
+        run: |
+          echo "Building solution: ${{ steps.find_sln.outputs.solution }}"
+          msbuild "${{ steps.find_sln.outputs.solution }}" /p:Configuration=Release /m
+
+      - name: Find vcxproj (if no .sln)
+        id: find_vcx
+        if: steps.find_sln.outputs.solution == ''
+        shell: bash
+        run: |
+          proj=$(find . -name '*.vcxproj' -print -quit || true)
+          echo "proj=$proj" >> $GITHUB_OUTPUT
+
+      - name: Build vcxproj with MSBuild (if found)
+        if: steps.find_vcx.outputs.proj != ''
+        shell: bash
+        run: |
+          echo "Building project: ${{ steps.find_vcx.outputs.proj }}"
+          msbuild "${{ steps.find_vcx.outputs.proj }}" /p:Configuration=Release /m
+
+      - name: Collect built .exe and package
+        shell: bash
+        run: |
+          mkdir -p artifacts || true
+          find . -type f -name '*.exe' -maxdepth 6 -print -exec cp {} artifacts/ \; || true
+          if [ -d artifacts ] && [ "$(ls -A artifacts)" ]; then
+            powershell -Command "Compress-Archive -Path artifacts/* -DestinationPath windows-build.zip"
+          else
+            echo "No se encontró .exe compilado"
+            mkdir -p artifacts
+            echo "No executables found" > artifacts/README.txt
+            powershell -Command "Compress-Archive -Path artifacts/* -DestinationPath windows-build.zip"
+          fi
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Windows-build
+          path: windows-build.zip
