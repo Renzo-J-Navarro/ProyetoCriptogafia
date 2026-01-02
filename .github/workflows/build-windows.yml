@@ -14,48 +14,65 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Diagnostic - list repo top files
+        shell: pwsh
+        run: |
+          Write-Host "Working directory: $(Get-Location)"
+          Write-Host "Top-level files and folders:";
+          Get-ChildItem -Path . -Force -Depth 1 | ForEach-Object { Write-Host $_.FullName }
+          Write-Host "Tree (depth 3):"
+          Get-ChildItem -Recurse -Depth 3 | ForEach-Object { Write-Host $_.FullName }
+
       - name: Find solution (.sln)
         id: find_sln
-        shell: bash
+        shell: pwsh
         run: |
-          sol=$(find . -name '*.sln' -print -quit || true)
-          echo "solution=$sol" >> $GITHUB_OUTPUT
+          $sln = Get-ChildItem -Path . -Filter *.sln -Recurse -File -ErrorAction SilentlyContinue | Select-Object -First 1
+          $slnPath = $null
+          if ($sln) { $slnPath = $sln.FullName }
+          Add-Content -Path $Env:GITHUB_OUTPUT -Value ("solution=" + $slnPath)
+          Write-Host "Solution found: $slnPath"
 
       - name: Build solution with MSBuild (if found)
         if: steps.find_sln.outputs.solution != ''
-        shell: bash
+        shell: pwsh
         run: |
-          echo "Building solution: ${{ steps.find_sln.outputs.solution }}"
-          msbuild "${{ steps.find_sln.outputs.solution }}" /p:Configuration=Release /m
+          Write-Host "Building solution: ${{ steps.find_sln.outputs.solution }}"
+          & msbuild "${{ steps.find_sln.outputs.solution }}" /p:Configuration=Release /m
 
       - name: Find vcxproj (if no .sln)
         id: find_vcx
         if: steps.find_sln.outputs.solution == ''
-        shell: bash
+        shell: pwsh
         run: |
-          proj=$(find . -name '*.vcxproj' -print -quit || true)
-          echo "proj=$proj" >> $GITHUB_OUTPUT
+          $proj = Get-ChildItem -Path . -Filter *.vcxproj -Recurse -File -ErrorAction SilentlyContinue | Select-Object -First 1
+          $projPath = $null
+          if ($proj) { $projPath = $proj.FullName }
+          Add-Content -Path $Env:GITHUB_OUTPUT -Value ("proj=" + $projPath)
+          Write-Host "vcxproj found: $projPath"
 
       - name: Build vcxproj with MSBuild (if found)
         if: steps.find_vcx.outputs.proj != ''
-        shell: bash
+        shell: pwsh
         run: |
-          echo "Building project: ${{ steps.find_vcx.outputs.proj }}"
-          msbuild "${{ steps.find_vcx.outputs.proj }}" /p:Configuration=Release /m
+          Write-Host "Building project: ${{ steps.find_vcx.outputs.proj }}"
+          & msbuild "${{ steps.find_vcx.outputs.proj }}" /p:Configuration=Release /m
 
       - name: Collect built .exe and package
-        shell: bash
+        shell: pwsh
         run: |
-          mkdir -p artifacts || true
-          find . -type f -name '*.exe' -maxdepth 6 -print -exec cp {} artifacts/ \; || true
-          if [ -d artifacts ] && [ "$(ls -A artifacts)" ]; then
-            powershell -Command "Compress-Archive -Path artifacts/* -DestinationPath windows-build.zip"
-          else
-            echo "No se encontró .exe compilado"
-            mkdir -p artifacts
-            echo "No executables found" > artifacts/README.txt
-            powershell -Command "Compress-Archive -Path artifacts/* -DestinationPath windows-build.zip"
-          fi
+          $art = Join-Path $PWD "artifacts"
+          New-Item -ItemType Directory -Path $art -Force | Out-Null
+          $exes = Get-ChildItem -Path . -Filter *.exe -Recurse -File -ErrorAction SilentlyContinue
+          if ($exes) {
+            foreach ($e in $exes) { Copy-Item -Path $e.FullName -Destination $art -Force }
+            Compress-Archive -Path (Join-Path $art '*') -DestinationPath windows-build.zip -Force
+            Write-Host "Packaged executables into windows-build.zip"
+          } else {
+            Write-Host "No .exe found after build"
+            New-Item -Path (Join-Path $art "README.txt") -ItemType File -Force -Value "No executables found" | Out-Null
+            Compress-Archive -Path (Join-Path $art '*') -DestinationPath windows-build.zip -Force
+          }
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
